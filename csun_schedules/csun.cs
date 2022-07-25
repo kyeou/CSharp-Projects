@@ -112,32 +112,24 @@ namespace csun
                 {
                     current_class = c.catalog_number;
                     Console.WriteLine("\n\n--------------\n" + c.subject + " " + c.catalog_number + " " + c.title);
-                    Console.WriteLine("\n\tSection\t\tLocation\tDays\t\tSeats Aval\t\tTime\t\t\t\tFaculty");
-                    Console.WriteLine("\t-------\t\t--------\t----\t\t----------\t\t----\t\t\t\t-------");
+                    Console.WriteLine("\n\tSection\t\tLocation\tDays\t\tSeats\t\t\tTime\t\t\t\tFaculty");
+                    Console.WriteLine("\t-------\t\t--------\t----\t\t-----\t\t\t----\t\t\t\t-------");
                 }
 
 
                 List<string> section_string = new List<string>();
-                section_string.Add("\t" + c.class_number);
 
-                if (c.meetings[0].location.Length != 7) { section_string.Add("\t\t" + c.meetings[0].location); }
-                else                                    { section_string.Add("\t       " + c.meetings[0].location); }
-
-                section_string.Add("\t\t" + c.meetings[0].days);
-                section_string.Add("\t\t" + (c.enrollment_cap - c.enrollment_count));
+                section_string.Add($"\t {c.class_number,-13} {c.meetings[0].location,8} {c.meetings[0].days,11} {c.enrollment_cap - c.enrollment_count, 15} ");
                 section_string.Add("\t\t    " +
-                                      (c.meetings[0].start_time).Substring(0, 2) + ":" +
-                                      (c.meetings[0].start_time).Substring(2, 2)
-                                      + " - " +
-                                      (c.meetings[0].end_time).Substring(0, 2) + ":" +
-                                      (c.meetings[0].end_time).Substring(2, 2));
+                                    (c.meetings[0].start_time).Substring(0, 2) + ":" +
+                                    (c.meetings[0].start_time).Substring(2, 2)
+                                    + " - " +
+                                    (c.meetings[0].end_time).Substring(0, 2) + ":" +
+                                    (c.meetings[0].end_time).Substring(2, 2));
+                if (c.instructors.Any()) { section_string.Add("\t\t" + c.instructors[0].instructor + "\n"); }
+                else                     { section_string.Add("\t\t\t" + "Staff\n"); }
 
 
-                if (c.instructors.Any()) { section_string.Add("\t\t" + c.instructors[0].instructor); }
-                else                     { section_string.Add("\t\t\t" + "Staff"); }
-
-
-                section_string.Add("\n");
                 foreach (string s in section_string)  { Console.Write(s); }
 
             }
