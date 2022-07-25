@@ -84,15 +84,15 @@ namespace csun
 
         public static async Task ShowCatalog()
         {
-            using HttpClient client_fall = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/Fall-2022/courses/comp") };
+            using HttpClient client_fall = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/Fall-2022/courses/comp") } ;
             using HttpClient client_spring = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/Spring-2022/courses/comp") };
 
-            Root? fall_listing = await client_fall.GetFromJsonAsync<Root?>(new string(""));
-            Root? spring_listing = await client_spring.GetFromJsonAsync<Root?>(new string(""));
+            Root fall_listing = await client_fall.GetFromJsonAsync<Root>(new string(""));
+            Root spring_listing = await client_spring.GetFromJsonAsync<Root>(new string(""));
 
-            List<Course> complete_listing = fall_listing?.courses.Concat(spring_listing?.courses).ToList();
+            List<Course> complete_listing = fall_listing.courses.Concat(spring_listing.courses).ToList();
 
-            complete_listing = complete_listing?.Distinct().ToList();
+            complete_listing = complete_listing.Distinct().ToList();
             complete_listing.DistinctBy(x => x.catalog_number).OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.catalog_number} - {x.title} - {x.units}"));
         }
 
@@ -100,9 +100,9 @@ namespace csun
         public static async Task ShowSchedule(String[] args)
         {
             using HttpClient client = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/" + args[0] + "-" + args[1] + "/classes/" + args[2]) };
-            Root? listing = await client.GetFromJsonAsync<Root?>(new string(""));
+            Root listing = await client.GetFromJsonAsync<Root>(new string(""));
 
-            listing?.filter(args);
+            listing.filter(args);
 
             //listing.classes.OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.class_number} - {x.catalog_number} - {x.title} - {x.units}"));
 
@@ -121,14 +121,9 @@ namespace csun
 
                 List<string> section_string = new List<string>();
                 section_string.Add("\t" + c.class_number);
-                if (c.meetings[0].location.Length != 7)
-                {
-                    section_string.Add("\t\t" + c.meetings[0].location);
-                }
-                else
-                {
-                    section_string.Add("\t       " + c.meetings[0].location);
-                }
+
+                if (c.meetings[0].location.Length != 7) { section_string.Add("\t\t" + c.meetings[0].location); }
+                else                                    { section_string.Add("\t       " + c.meetings[0].location); }
 
                 section_string.Add("\t\t" + c.meetings[0].days);
                 section_string.Add("\t\t" + (c.enrollment_cap - c.enrollment_count));
@@ -140,28 +135,19 @@ namespace csun
                                       (c.meetings[0].end_time).Substring(2, 2));
 
 
-                if (c.instructors.Any())
-                {
-                    section_string.Add("\t\t" + c.instructors[0].instructor);
-
-                }
-                else { section_string.Add("\t\t\t" + "Staff"); }
+                if (c.instructors.Any()) { section_string.Add("\t\t" + c.instructors[0].instructor); }
+                else                     { section_string.Add("\t\t\t" + "Staff"); }
 
 
                 section_string.Add("\n");
-                foreach (string s in section_string)
-                {
-                    Console.Write(s);
-                }
+                foreach (string s in section_string)  { Console.Write(s); }
 
             }
         }
 
         public static async Task Main(String[] args)
         {
-
             await ShowSchedule(args);
-
         }
     }
 }
