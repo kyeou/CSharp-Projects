@@ -20,29 +20,32 @@ namespace csun
     {
         public List<Course> courses { get; set; } = default!;
         public List<Class> classes { get; set; } = default!;
-        public void filter(String[] args) {
-            if (args.Length >= 5) {
-                for (int i = 0; i < (args.Length - 5) / 2; i++) {
+        public void filter(String[] args)
+        {
+            if (args.Length >= 5)
+            {
+                for (int i = 0; i < (args.Length - 5) / 2; i++)
+                {
                     Console.WriteLine("filter function called");
                 }
             }
-        
+
         }
     }
     public class Class
     {
-        public string class_number { get; set; }= default!;
-        public string subject { get; set; }= default!;
-        public string catalog_number { get; set; }= default!;
-        public string section_number { get; set; }= default!;
-        public string title { get; set; }= default!;
-        public int course_id { get; set; }= default!;
-        public string description { get; set; }= default!;
-        public string units { get; set; }= default!;
+        public string class_number { get; set; } = default!;
+        public string subject { get; set; } = default!;
+        public string catalog_number { get; set; } = default!;
+        public string section_number { get; set; } = default!;
+        public string title { get; set; } = default!;
+        public int course_id { get; set; } = default!;
+        public string description { get; set; } = default!;
+        public string units { get; set; } = default!;
 
-        public int enrollment_cap { get; set; }= default!;
-        public int enrollment_count { get; set; }= default!;
-        public int waitlist_cap { get; set; }= default!;
+        public int enrollment_cap { get; set; } = default!;
+        public int enrollment_count { get; set; } = default!;
+        public int waitlist_cap { get; set; } = default!;
         public int waitlist_count { get; set; } = default!;
         public List<Meeting> meetings { get; set; } = default!;
         public List<Instructor> instructors { get; set; } = default!;
@@ -50,16 +53,16 @@ namespace csun
 
     public class Instructor
     {
-        public string? instructor { get; set; }= default!;
+        public string? instructor { get; set; } = default!;
     }
 
     public class Meeting
     {
-        public int meeting_number { get; set; }= default!;
-        public string location { get; set; }= default!;
-        public string start_time { get; set; }= default!;
-        public string end_time { get; set; }= default!;
-        public string days { get; set; }= default!;
+        public int meeting_number { get; set; } = default!;
+        public string location { get; set; } = default!;
+        public string start_time { get; set; } = default!;
+        public string end_time { get; set; } = default!;
+        public string days { get; set; } = default!;
     }
     public class Course
     {
@@ -69,10 +72,10 @@ namespace csun
             return catalog_number.Equals(other.catalog_number);
         }
         public string subject { get; set; } = default!;
-        public string catalog_number { get; set; }= default!;
-        public string title { get; set; }= default!;
-        public string description { get; set; }= default!;
-        public string units { get; set; }= default!;
+        public string catalog_number { get; set; } = default!;
+        public string title { get; set; } = default!;
+        public string description { get; set; } = default!;
+        public string units { get; set; } = default!;
 
     }
 
@@ -93,12 +96,12 @@ namespace csun
             complete_listing.DistinctBy(x => x.catalog_number).OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.catalog_number} - {x.title} - {x.units}"));
         }
 
-        
+
         public static async Task ShowSchedule(String[] args)
         {
             using HttpClient client = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/" + args[0] + "-" + args[1] + "/classes/" + args[2]) };
             Root? listing = await client.GetFromJsonAsync<Root?>(new string(""));
-            
+
             listing?.filter(args);
 
             //listing.classes.OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.class_number} - {x.catalog_number} - {x.title} - {x.units}"));
