@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\csharp_json_tests.csproj",
-      "projectName": "csharp_json_tests",
-      "projectPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\csharp_json_tests.csproj",
+      "projectUniqueName": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csun_schedules\\csun_schedules.csproj",
+      "projectName": "csun_schedules",
+      "projectPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csun_schedules\\csun_schedules.csproj",
       "packagesPath": "C:\\Users\\kyeou\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\obj\\",
+      "outputPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csun_schedules\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

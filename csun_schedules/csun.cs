@@ -31,35 +31,35 @@ namespace csun
     }
     public class Class
     {
-        public string? class_number { get; set; }
-        public string? subject { get; set; }
-        public string? catalog_number { get; set; }
-        public string? section_number { get; set; }
-        public string? title { get; set; }
-        public int? course_id { get; set; }
-        public string? description { get; set; }
-        public string? units { get; set; }
+        public string class_number { get; set; }= default!;
+        public string subject { get; set; }= default!;
+        public string catalog_number { get; set; }= default!;
+        public string section_number { get; set; }= default!;
+        public string title { get; set; }= default!;
+        public int course_id { get; set; }= default!;
+        public string description { get; set; }= default!;
+        public string units { get; set; }= default!;
 
-        public int? enrollment_cap { get; set; }
-        public int? enrollment_count { get; set; }
-        public int? waitlist_cap { get; set; }
-        public int? waitlist_count { get; set; }
+        public int enrollment_cap { get; set; }= default!;
+        public int enrollment_count { get; set; }= default!;
+        public int waitlist_cap { get; set; }= default!;
+        public int waitlist_count { get; set; } = default!;
         public List<Meeting> meetings { get; set; } = default!;
         public List<Instructor> instructors { get; set; } = default!;
     }
 
     public class Instructor
     {
-        public string? instructor { get; set; }
+        public string? instructor { get; set; }= default!;
     }
 
     public class Meeting
     {
-        public int? meeting_number { get; set; }
-        public string? location { get; set; }
-        public string? start_time { get; set; }
-        public string? end_time { get; set; }
-        public string? days { get; set; }
+        public int meeting_number { get; set; }= default!;
+        public string location { get; set; }= default!;
+        public string start_time { get; set; }= default!;
+        public string end_time { get; set; }= default!;
+        public string days { get; set; }= default!;
     }
     public class Course
     {
@@ -68,13 +68,11 @@ namespace csun
             if (obj is null || !(obj is Course other)) return false;
             return catalog_number.Equals(other.catalog_number);
         }
-        public string? subject { get; set; }
-        public string? catalog_number { get; set; }
-
-        public string? title { get; set; }
-
-        public string? description { get; set; }
-        public string? units { get; set; }
+        public string subject { get; set; } = default!;
+        public string catalog_number { get; set; }= default!;
+        public string title { get; set; }= default!;
+        public string description { get; set; }= default!;
+        public string units { get; set; }= default!;
 
     }
 
@@ -101,7 +99,7 @@ namespace csun
             using HttpClient client = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/" + args[0] + "-" + args[1] + "/classes/" + args[2]) };
             Root? listing = await client.GetFromJsonAsync<Root?>(new string(""));
             
-            listing.filter(args);
+            listing?.filter(args);
 
             //listing.classes.OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.class_number} - {x.catalog_number} - {x.title} - {x.units}"));
 
