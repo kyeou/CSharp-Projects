@@ -85,10 +85,10 @@ namespace csun
             using HttpClient client_fall = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/Fall-2022/courses/comp") } ;
             using HttpClient client_spring = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/Spring-2022/courses/comp") };
 
-            Root fall_listing = await client_fall.GetFromJsonAsync<Root>(new string(""));
-            Root spring_listing = await client_spring.GetFromJsonAsync<Root>(new string(""));
+            Root? fall_listing = await client_fall.GetFromJsonAsync<Root>(new string(""));
+            Root? spring_listing = await client_spring.GetFromJsonAsync<Root>(new string(""));
 
-            List<Course> complete_listing = fall_listing.courses.Concat(spring_listing.courses).ToList();
+            List<Course>? complete_listing = fall_listing.courses.Concat(spring_listing.courses).ToList();
 
             complete_listing = complete_listing.Distinct().ToList();
             complete_listing.DistinctBy(x => x.catalog_number).OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.catalog_number} - {x.title} - {x.units}"));
@@ -98,9 +98,9 @@ namespace csun
         public static async Task ShowSchedule(String[] args)
         {
             using HttpClient client = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/" + args[0] + "-" + args[1] + "/classes/" + args[2]) };
-            Root listing = await client.GetFromJsonAsync<Root>(new string(""));
+            Root? listing = await client.GetFromJsonAsync<Root>(new string(""));
 
-            listing.filter(args);
+            listing?.filter(args);
 
             //listing.classes.OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.class_number} - {x.catalog_number} - {x.title} - {x.units}"));
 
@@ -111,7 +111,7 @@ namespace csun
                 if (!(current_class.Equals(c.catalog_number)))
                 {
                     current_class = c.catalog_number;
-                    Console.WriteLine("\n\n--------------\n" + c.subject + " " + c.catalog_number + " " + c.title);
+                    Console.WriteLine("\n\n--------------\n\n" + c.subject + " " + c.catalog_number + " " + c.title);
                     Console.WriteLine("\n\tSection\t\tLocation\tDays\t\tSeats\t\t\tTime\t\t\t\tFaculty");
                     Console.WriteLine("\t-------\t\t--------\t----\t\t-----\t\t\t----\t\t\t\t-------");
                 }
