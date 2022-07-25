@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\Kyeou-C#\\csharp_json_tests\\csharp_json_tests.csproj": {}
+    "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\csharp_json_tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\Kyeou-C#\\csharp_json_tests\\csharp_json_tests.csproj": {
+    "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\csharp_json_tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\Kyeou-C#\\csharp_json_tests\\csharp_json_tests.csproj",
+        "projectUniqueName": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\csharp_json_tests.csproj",
         "projectName": "csharp_json_tests",
-        "projectPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\Kyeou-C#\\csharp_json_tests\\csharp_json_tests.csproj",
+        "projectPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\csharp_json_tests.csproj",
         "packagesPath": "C:\\Users\\kyeou\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\Kyeou-C#\\csharp_json_tests\\obj\\",
+        "outputPath": "C:\\Users\\kyeou\\Dropbox\\PC (2)\\Desktop\\Stuff On Github\\CSharp_Projects\\csharp_json_tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
