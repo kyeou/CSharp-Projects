@@ -3,7 +3,8 @@ using System.Net;
 using System.IO;
 using System.Text.Json;
 using System.Net.Http.Json;
-// See https://aka.ms/new-console-template for more information
+
+
 namespace csun
 {
     //https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-how-to?pivots=dotnet-7-0
