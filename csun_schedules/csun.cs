@@ -5,7 +5,6 @@ using System.Text.Json;
 using System.Net.Http.Json;
 
 /* 
-
 How to run: Download the whole csun_schedules folder
 Open CL in folder and run: dotnet run Term Year SubjectCode
 Example: dotnet run Fall 2022 comp
@@ -81,7 +80,6 @@ namespace csun
 
     public class csun
     {
-
         public static async Task ShowCatalog()
         {
             using HttpClient client_fall = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/Fall-2022/courses/comp") } ;
