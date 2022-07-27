@@ -99,7 +99,7 @@ namespace csun
             using HttpClient client = new() { BaseAddress = new Uri("https://api.metalab.csun.edu/curriculum/api/2.0/terms/" + args[0] + "-" + args[1] + "/classes/" + args[2]) };
             Root? listing = await client.GetFromJsonAsync<Root>(new string(""));
 
-            //listing?.filter(args);
+            listing?.filter(args);
 
             //listing.classes.OrderBy(x => x.catalog_number).ToList().ForEach(x => Console.WriteLine($"{x.class_number} - {x.catalog_number} - {x.title} - {x.units}"));
 
